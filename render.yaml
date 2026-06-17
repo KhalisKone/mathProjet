@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: math-projet4-api
+    runtime: python
+    rootDir: projet4_tv
+    plan: free
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.12.3
