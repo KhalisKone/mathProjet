@@ -25,7 +25,8 @@ const METRIC_LABELS: Record<string, string> = {
 function extractMetrics(headers: Headers): Metrics {
   const out: Metrics = {};
   headers.forEach((value, key) => {
-    if (key.toLowerCase().startsWith("x-")) out[key.toLowerCase()] = value;
+    const k = key.toLowerCase();
+    if (k in METRIC_LABELS) out[k] = value;
   });
   return out;
 }
